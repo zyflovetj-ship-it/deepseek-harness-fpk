@@ -1,0 +1,53 @@
+{
+  "schema_version": "2",
+  "source_info": {
+    "name": "DeepSeek AI应用源",
+    "author": "DeepSeek AI",
+    "homepage": "https://github.com/deepseek-ai/deepseek-harness",
+    "description": "DeepSeek AI维护的飞牛私有云 NAS 第三方应用源（x86 与 ARM64 双架构）"
+  },
+  "apps": {
+    "deepseek-harness": {
+      "display_name": "DeepSeek Harness",
+      "desc": "DeepSeek 官方开源 AI 开发助手与桌面工作台（DeepSeek AI定制版）。内置公益 API 端点开箱即用，模型与 API 均可编辑；工作区与飞牛【文件管理】实时互通，支持局域网非安全上下文。",
+      "platform": [
+        "x86",
+        "arm"
+      ],
+      "categories": [
+        "AI赋能"
+      ],
+      "icon_url": "https://raw.githubusercontent.com/zyflovetj-ship-it/deepseek-harness-fpk/main/apps/deepseek-harness/fnos/ICON_256.PNG",
+      "maintainer": "DeepSeek AI",
+      "maintainer_url": "https://github.com/deepseek-ai/deepseek-harness",
+      "version": "0.2.0-rc.2",
+      "author": "DeepSeek AI",
+      "distributor": "DeepSeek AI",
+      "download_url": "https://github.com/zyflovetj-ship-it/deepseek-harness-fpk/releases/download/v0.2.0-rc.2/deepseek-harness_0.2.0-rc.2_x86.fpk",
+      "sha256": "2b177e36d71bb2e545cd489d6a6230a46659455e949ce626dd254f6577dbb228",
+      "size": 166,
+      "run_as": "package",
+      "install_type": "",
+      "is_docker": false,
+      "service_port": "3080",
+      "releases": {
+        "0.2.0-rc.2": {
+          "changelog": "开箱即用的公益端点与预制提供商；凭据权限收紧（600）；停止彻底释放端口；支持局域网 Polyfill 与飞牛文件管理双向互通。",
+          "updated_at": "2026-10-11T13:00:11+00:00",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/zyflovetj-ship-it/deepseek-harness-fpk/releases/download/v0.2.0-rc.2/deepseek-harness_0.2.0-rc.2_x86.fpk",
+              "sha256": "2b177e36d71bb2e545cd489d6a6230a46659455e949ce626dd254f6577dbb228",
+              "size": 174386781
+            },
+            "arm": {
+              "download_url": "https://github.com/zyflovetj-ship-it/deepseek-harness-fpk/releases/download/v0.2.0-rc.2/deepseek-harness_0.2.0-rc.2_arm.fpk",
+              "sha256": "b50bdc3db131da74da616ed57ed8e1bc8b348d46b819e9d684d899deffffa508",
+              "size": 176126769
+            }
+          }
+        }
+      }
+    }
+  }
+}
