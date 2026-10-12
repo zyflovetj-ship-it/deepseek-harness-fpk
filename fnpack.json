@@ -24,8 +24,8 @@
       "author": "DeepSeek AI",
       "distributor": "DeepSeek AI",
       "download_url": "https://github.com/zyflovetj-ship-it/deepseek-harness-fpk/releases/download/v0.2.0-rc.2/deepseek-harness_0.2.0-rc.2_x86.fpk",
-      "sha256": "2b177e36d71bb2e545cd489d6a6230a46659455e949ce626dd254f6577dbb228",
-      "size": 166,
+      "sha256": "bfb28e20d03664d6e810ac724096190048d9db76f09f90114c87c556c4bca8de",
+      "size": 169,
       "run_as": "package",
       "install_type": "",
       "is_docker": false,
@@ -33,17 +33,17 @@
       "releases": {
         "0.2.0-rc.2": {
           "changelog": "开箱即用的公益端点与预制提供商；凭据权限收紧（600）；停止彻底释放端口；支持局域网 Polyfill 与飞牛文件管理双向互通。",
-          "updated_at": "2026-10-11T13:00:11+00:00",
+          "updated_at": "2026-10-12T02:55:49+00:00",
           "packages": {
             "x86": {
               "download_url": "https://github.com/zyflovetj-ship-it/deepseek-harness-fpk/releases/download/v0.2.0-rc.2/deepseek-harness_0.2.0-rc.2_x86.fpk",
-              "sha256": "2b177e36d71bb2e545cd489d6a6230a46659455e949ce626dd254f6577dbb228",
-              "size": 174386781
+              "sha256": "bfb28e20d03664d6e810ac724096190048d9db76f09f90114c87c556c4bca8de",
+              "size": 177350947
             },
             "arm": {
               "download_url": "https://github.com/zyflovetj-ship-it/deepseek-harness-fpk/releases/download/v0.2.0-rc.2/deepseek-harness_0.2.0-rc.2_arm.fpk",
-              "sha256": "b50bdc3db131da74da616ed57ed8e1bc8b348d46b819e9d684d899deffffa508",
-              "size": 176126769
+              "sha256": "0efc03f1d0060007140ed16877690e6997a2575e38afbf116410eb3716e5bd53",
+              "size": 179029115
             }
           }
         }
