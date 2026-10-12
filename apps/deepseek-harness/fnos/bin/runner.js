@@ -393,7 +393,10 @@ const dshProcess = spawn(NODE_BIN, [DSH_BIN, 'web', '--host', '127.0.0.1', '--po
     cwd: WORKSPACE_DIR,
     env: {
         ...dshEnv,
-        PATH: `${path.join(APP_DIR, 'bin')}:${process.env.PATH}`,
+        // 自带 bin 必须排在首位：pnpm 处理 git 依赖与查询 registry 时会
+        // 透传调用 `npm`（runNpm → spawnSync npm），缺了会报 spawnSync npm ENOENT。
+        // 同时补上 node 自带的 bin 目录作为兜底。
+        PATH: `${path.join(APP_DIR, 'bin')}:${path.join(APP_DIR, 'node', 'bin')}:${process.env.PATH}`,
         HOME: WORKSPACE_DIR,
         DSH_HOME: path.join(WORKSPACE_DIR, '.dsh')
     },

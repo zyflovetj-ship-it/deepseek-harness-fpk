@@ -30,6 +30,8 @@ fi
 
 TARBALL_ARCH="${TARBALL_ARCH:-amd64}"
 PNPM_VERSION="${PNPM_VERSION:-10.14.0}"
+# pnpm 会透传调用 npm（插件市场查询、git 依赖的 prepare 钩子），必须一并打包
+NPM_VERSION="${NPM_VERSION:-10.9.4}"
 OUTPUT_TGZ="${OUTPUT_TGZ:-${REPO_ROOT}/app_${TARBALL_ARCH}.tgz}"
 
 case "$TARBALL_ARCH" in
@@ -91,9 +93,15 @@ cp "${WORK_DIR}/dsh-web/package.json" "${WORK_DIR}/app_root/package.json" 2>/dev
 # DSH 的 `plugin` 子命令会在 profile 目录直接执行 `pnpm`。此前 FPK 只
 # 复制了 node，主题/扩展安装会报 pnpm not found。固定版本随应用打包，
 # runner 已将 app_root/bin 放在 PATH 首位。
-echo "==> Bundling pnpm ${PNPM_VERSION} for DSH plugin management..."
-"${WORK_DIR}/node/bin/npm" install --global --prefix "${WORK_DIR}/app_root" "pnpm@${PNPM_VERSION}" --omit=dev --no-audit --no-fund
+#
+# 同时必须打包 npm：pnpm 在处理 git 依赖与查询 registry 时会透传调用
+# `npm`（runNpm → spawnSync npm），例如插件市场读插件信息会执行
+# `npm view <pkg> ...`、带 prepare 脚本的 git 依赖会执行 `npm install`。
+# 缺少 npm 时报 spawnSync npm ENOENT / sh: 1: npm: not found。
+echo "==> Bundling pnpm ${PNPM_VERSION} + npm for DSH plugin management..."
+"${WORK_DIR}/node/bin/npm" install --global --prefix "${WORK_DIR}/app_root" "pnpm@${PNPM_VERSION}" "npm@${NPM_VERSION}" --omit=dev --no-audit --no-fund
 test -x "${WORK_DIR}/app_root/bin/pnpm"
+test -x "${WORK_DIR}/app_root/bin/npm"
 
 # 随应用提供便捷的 dsh 命令行包装脚本，确保在终端/子进程中可直接通过 PATH 执行 dsh
 echo "==> Creating dsh CLI launcher..."
